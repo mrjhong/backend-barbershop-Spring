@@ -2,7 +2,11 @@ package com.barbershop.crud.security.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import com.barbershop.crud.entity.Servicios;
+
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,7 +23,11 @@ public class Usuario {
     private String email;
     @NotNull
     private String password;
-    @NotNull
+    
+    @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
+    private List<Servicios> listaServicios;
+    
+    @NotNull 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"),
     inverseJoinColumns = @JoinColumn(name = "rol_id"))

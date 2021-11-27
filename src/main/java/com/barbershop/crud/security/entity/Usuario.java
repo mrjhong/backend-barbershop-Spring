@@ -1,6 +1,7 @@
 package com.barbershop.crud.security.entity;
 
 import javax.persistence.*;
+
 import javax.validation.constraints.NotNull;
 
 import com.barbershop.crud.entity.Servicios;
@@ -13,6 +14,7 @@ import java.util.Set;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+   
     private int id;
     @NotNull
     private String nombre;
@@ -43,7 +45,15 @@ public class Usuario {
         this.password = password;
     }
 
-    public int getId() {
+    public List<Servicios> getListaServicios() {
+		return listaServicios;
+	}
+
+	public void setListaServicios(List<Servicios> listaServicios) {
+		this.listaServicios = listaServicios;
+	}
+
+	public int getId() {
         return id;
     }
 

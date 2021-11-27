@@ -22,13 +22,13 @@ public class Servicios {
     private String imagen;
     
     @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "cliente_id")
     private Usuario idUser;
+
     
     public Servicios() {
-    }	
-
-   
+		super();
+	}
 
 
 	public Servicios(int idServicios, String nombre, String descripcion, String imagen, Usuario idUser) {
@@ -41,20 +41,14 @@ public class Servicios {
 	}
 
 
-
-
 	public int getIdServicios() {
 		return idServicios;
 	}
 
 
-
-
 	public void setIdServicios(int idServicios) {
 		this.idServicios = idServicios;
 	}
-
-
 
 
 	public String getNombre() {
@@ -87,6 +81,15 @@ public class Servicios {
 	}
 
 
+	public Usuario getIdUser() {
+		return idUser;
+	}
+
+
+	public void setIdUser(Usuario idUser) {
+		this.idUser = idUser;
+	}
+
 
 
 	@Override
@@ -94,8 +97,9 @@ public class Servicios {
 		return "Servicios [idServicios=" + idServicios + ", nombre=" + nombre + ", descripcion=" + descripcion
 				+ ", imagen=" + imagen + ", idUser=" + idUser + "]";
 	}
-
-
 	
+	
+    
 }
-
+    
+    

@@ -16,7 +16,7 @@ public class Servicios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idServicios;
+    private Integer id;
     private String nombre;
     private String descripcion;
     private String imagen;
@@ -25,76 +25,64 @@ public class Servicios {
     @JoinColumn(name = "cliente_id")
     private Usuario idUser;
 
-    
     public Servicios() {
-		super();
-	}
+    }
 
+    public Servicios(Integer id, String nombre, String descripcion, String imagen, Usuario idUser) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.imagen = imagen;
+        this.idUser = idUser;
+    }
 
-	public Servicios(int idServicios, String nombre, String descripcion, String imagen, Usuario idUser) {
-		super();
-		this.idServicios = idServicios;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.imagen = imagen;
-		this.idUser = idUser;
-	}
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public int getIdServicios() {
-		return idServicios;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public void setIdServicios(int idServicios) {
-		this.idServicios = idServicios;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public String getImagen() {
+        return imagen;
+    }
 
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public Usuario getIdUser() {
+        return idUser;
+    }
 
+    public void setIdUser(Usuario idUser) {
+        this.idUser = idUser;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-
-	public String getImagen() {
-		return imagen;
-	}
-
-
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
-	}
-
-
-	public Usuario getIdUser() {
-		return idUser;
-	}
-
-
-	public void setIdUser(Usuario idUser) {
-		this.idUser = idUser;
-	}
-
+    
+    
 
 
 	@Override
 	public String toString() {
-		return "Servicios [idServicios=" + idServicios + ", nombre=" + nombre + ", descripcion=" + descripcion
+		return "Servicios [idServicios=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion
 				+ ", imagen=" + imagen + ", idUser=" + idUser + "]";
 	}
 	

@@ -9,11 +9,6 @@ import com.barbershop.crud.security.enums.RolNombre;
 import com.barbershop.crud.security.service.RolService;
 
 
-/**
- * MUY IMPORTANTE: ESTA CLASE SÓLO SE EJECUTARÁ UNA VEZ PARA CREAR LOS ROLES.
- * UNA VEZ CREADOS SE DEBERÁ ELIMINAR O BIEN COMENTAR EL CÓDIGO
- *
- */
 
 @Component
 public class CreateRoles implements CommandLineRunner {

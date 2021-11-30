@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/producto")
-@CrossOrigin(origins = "*")
+@CrossOrigin("*")
 public class ProductoController {
 
     @Autowired
@@ -34,6 +34,8 @@ public class ProductoController {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         Producto producto = productoService.getOne(id).get();
         return new ResponseEntity(producto, HttpStatus.OK);
+
+        
     }
 
     @GetMapping("/detailname/{nombre}")

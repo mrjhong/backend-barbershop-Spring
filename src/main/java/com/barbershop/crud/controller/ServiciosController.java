@@ -1,6 +1,7 @@
 package com.barbershop.crud.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,7 +9,8 @@ import com.barbershop.crud.entity.Servicios;
 
 
 @RestController
-@RequestMapping("/Servicios")
+@RequestMapping(value = "/pi/Servicios/")
+@CrossOrigin("*")
 public class ServiciosController {
     @GetMapping("")
     public String list(){

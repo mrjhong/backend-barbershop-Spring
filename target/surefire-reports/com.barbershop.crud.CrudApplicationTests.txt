@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.barbershop.crud.CrudApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.005 s - in com.barbershop.crud.CrudApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.438 s - in com.barbershop.crud.CrudApplicationTests

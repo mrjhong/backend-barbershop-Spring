@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+E:\Ciclo - 4 Spring\Proyectos\backend-barbershop-Spring\.metadata\.plugins\org.eclipse.jdt.core

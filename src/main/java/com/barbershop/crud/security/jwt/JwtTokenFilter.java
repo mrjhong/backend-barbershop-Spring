@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public class JwtTokenFilter extends OncePerRequestFilter {
 
@@ -38,13 +39,13 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(auth);
             }
-        } catch (Exception e){
+        } catch (UsernameNotFoundException e){
             logger.error("fail en el método doFilter " + e.getMessage());
         }
         filterChain.doFilter(req, res);
     }
 
-    private String getToken(HttpServletRequest request){
+    public String getToken(HttpServletRequest request){
         String header = request.getHeader("Authorization");
         if(header != null && header.startsWith("Bearer"))
             return header.replace("Bearer ", "");

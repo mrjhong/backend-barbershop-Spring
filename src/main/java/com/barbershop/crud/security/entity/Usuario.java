@@ -1,13 +1,9 @@
 package com.barbershop.crud.security.entity;
-
 import javax.persistence.*;
-
 import javax.validation.constraints.NotNull;
 
-import com.barbershop.crud.entity.Producto;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,19 +17,13 @@ public class Usuario {
     @NotNull
     @Column(unique = true)
     private String nombreUsuario;
-    
-    @NotNull
-    private String email;
-    
-    @NotNull
-    private String foto;
-    
-    @NotNull
-    private String descripcion;
-    
+
     @NotNull
     private String password;
     
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "detalleperfil")
+    private  Perfil perfilUsuario ;
 
     
     @NotNull 
@@ -45,18 +35,19 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(@NotNull String nombre, @NotNull String nombreUsuario, 
-            @NotNull String email,@NotNull String foto,@NotNull String descripcion,
+    public Usuario(Perfil perfilUsuario) {
+        this.perfilUsuario = perfilUsuario;
+    }
+    
+
+    
+    public Usuario(@NotNull String nombre, 
+            @NotNull String nombreUsuario, 
             @NotNull String password) {
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
-        this.email = email;
-        this.foto= foto;
-        this.descripcion = descripcion;
-        this.password = password;
+        this.password = password;//To change body of generated methods, choose Tools | Templates.
     }
-
-
 
     public int getId() {
         return id;
@@ -81,22 +72,27 @@ public class Usuario {
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+    
     public String getPassword() {
         return password;
     }
 
+  
+
+    public Perfil getPerfilUsuario() {
+        return perfilUsuario;
+    }
+
+    public void setPerfilUsuario(Perfil perfilUsuario) {
+        this.perfilUsuario = perfilUsuario;
+    }
+
+
+    
     public void setPassword(String password) {
         this.password = password;
     }
+
 
     public Set<Rol> getRoles() {
         return roles;
@@ -105,22 +101,5 @@ public class Usuario {
     public void setRoles(Set<Rol> roles) {
         this.roles = roles;
     }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-    
     
 }

@@ -11,20 +11,13 @@ import java.util.stream.Collectors;
 public class UsuarioPrincipal implements UserDetails {
     private String nombre;
     private String nombreUsuario;
-    private final String foto;
-    private String descripcion;
-    private String email;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UsuarioPrincipal(String nombre, String nombreUsuario, String foto,
-            String descripcion, String email, String password,
+    public UsuarioPrincipal(String nombre, String nombreUsuario,String password,
             Collection<? extends GrantedAuthority> authorities) {
         this.nombre = nombre;
-        this.nombreUsuario = nombreUsuario;
-        this.foto = foto;
-        this.descripcion = descripcion;
-        this.email = email;
+        this.nombreUsuario = nombreUsuario; 
         this.password = password;
         this.authorities = authorities;
        
@@ -35,9 +28,7 @@ public class UsuarioPrincipal implements UserDetails {
                 usuario.getRoles().stream().map(rol -> new SimpleGrantedAuthority(rol
                 .getRolNombre().name())).collect(Collectors.toList());
         return new UsuarioPrincipal(usuario.getNombre(), 
-                usuario.getNombreUsuario(), usuario.getEmail(),
-                usuario.getFoto(),
-                usuario.getDescripcion(),
+                usuario.getNombreUsuario(), 
                 usuario.getPassword(), authorities);
     }
 
@@ -55,15 +46,15 @@ public class UsuarioPrincipal implements UserDetails {
     public String getUsername() {
         return nombreUsuario ;
     }
-    
-    
-    public String getFoto() {
-        return foto;
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
-    
-    public String getDescripcion() {
-        return descripcion;
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
+
     
     @Override
     public boolean isAccountNonExpired() {
@@ -89,8 +80,6 @@ public class UsuarioPrincipal implements UserDetails {
         return nombre;
     }
 
-    public String getEmail() {
-        return email;
-    }
+   
     
 }
